@@ -14,19 +14,15 @@ private:
     double price;
 
 public:
-    // Конструктор за замовчуванням (делегує іншому)
     Product() : Product("Unknown", 0.0) {}
 
-    // Конструктор з параметрами
     Product(std::string n, double p)
     : name(std::move(n)), price(p) {}
 
-    // Деструктор
     ~Product() {
         std::cout << "Product destroyed: " << name << std::endl;
     }
 
-    // Методи
     void showInfo() const {
         std::cout << "Product: " << name << ", Price: " << price << std::endl;
     }
@@ -43,19 +39,15 @@ private:
     int age;
 
 public:
-    // Конструктор за замовчуванням
     Customer() : Customer("No name", 0) {}
 
-    // Перевантажений конструктор
     Customer(std::string n, int a)
     : name(std::move(n)), age(a) {}
 
-    // Деструктор
     ~Customer() {
         std::cout << "Customer destroyed: " << name << std::endl;
     }
 
-    // Метод
     void showInfo() const {
         std::cout << "Customer: " << name << ", Age: " << age << std::endl;
     }
@@ -69,20 +61,16 @@ private:
     int quantity;
 
 public:
-    // Конструктор з параметрами за замовчуванням
     Order(int id = 0, int q = 1)
     : orderID(id), product(), quantity(q) {}
 
-    // Перевантажений конструктор
     Order(int id, Product p, int q)
     : orderID(id), product(p), quantity(q) {}
 
-    // Деструктор
     ~Order() {
         std::cout << "Order destroyed: ID " << orderID << std::endl;
     }
 
-    // Метод
     void showInfo() const {
         std::cout << "Order ID: " << orderID << std::endl;
         product.showInfo();
