@@ -12,10 +12,11 @@ private:
     int age;
 
 public:
+
     Customer() : Customer("No name", 0) {}
 
     Customer(std::string n, int a)
-    : name(std::move(n)), age(a) {}
+        : name(std::move(n)), age(a) {}
 
     ~Customer() {
         std::cout << "Customer destroyed: " << name << std::endl;
