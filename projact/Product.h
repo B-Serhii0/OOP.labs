@@ -5,46 +5,52 @@
 #define PRODUCT_H
 #include <iostream>
 #include <string>
-
-class Product {
+#include "Item.h"
+class Product : public Item {
 private:
-    std::string name;
     double price;
-
     static int productCount;
 
 public:
-
-    Product() : Product("Unknown", 0.0) {}
+    Product() : Item("Unknown"), price(0.0) {
+        productCount++;
+    }
 
     Product(std::string n, double p)
-        : name(std::move(n)), price(p)
+        : Item(n), price(p)
     {
         productCount++;
     }
 
     Product(const Product& other)
+        : Item(other.name), price(other.price)
     {
-        this->name = other.name;
-        this->price = other.price;
         productCount++;
     }
 
     Product(Product&& other) noexcept
+        : Item(std::move(other.name)), price(other.price)
     {
-        this->name = std::move(other.name);
-        this->price = other.price;
-
         other.price = 0;
         productCount++;
     }
 
-    ~Product() {
+    Product& operator=(const Product& other)
+    {
+        if (this != &other) {
+            name = other.name;
+            price = other.price;
+        }
+        return *this;
+    }
+
+    virtual ~Product() {
         std::cout << "Product destroyed: " << name << std::endl;
     }
 
-    void showInfo() const {
-        std::cout << "Product: " << name << ", Price: " << price << std::endl;
+    void showInfo() const override {
+        std::cout << "Product: " << name
+                  << ", Price: " << price << std::endl;
     }
 
     double getPrice() const {

@@ -6,42 +6,42 @@
 #include "Order.h"
 #include "Product.h"
 #include "Customer.h"
+#include "VIPCustomer.h"
+#include "ElectronicProduct.h"
+#include "FoodProduct.h"
+#include "Item.h"
 
 int main() {
 
-    Product p1("Laptop", 25000);
-    Product p2("Mouse", 500);
+    ElectronicProduct laptop("Laptop",25000,24);
+    FoodProduct apple("Apple",30,52);
 
-    Product p3 = p1;
+    Customer c1("Ivan",19);
+    VIPCustomer vip("Oleg",25,10);
 
-    Product p4 = std::move(p2);
+    Order o1(1,laptop,c1,2);
+    Order o2(2,apple,vip,5);
 
-    const Product p5("Keyboard", 1200);
+    std::cout << "\n--- Products ---\n";
+    laptop.showInfo();
+    apple.showInfo();
 
-    Customer c1("Ivan", 19);
-
-    Order o1(1, p1, 2);
-    Order o2(2, p3, 1);
-
-    std::cout << "\n--- Product Info ---\n";
-    p1.showInfo();
-    p3.showInfo();
-
-    std::cout << "\n--- Const object ---\n";
-    p5.showInfo();
-
-    std::cout << "\n--- Operator + example ---\n";
-    std::cout << "Sum of prices: " << p1 + p3 << std::endl;
+    std::cout << "\n--- Customers ---\n";
+    c1.showInfo();
+    vip.showInfo();
 
     std::cout << "\n--- Orders ---\n";
     o1.showInfo();
     o2.showInfo();
 
-    std::cout << "\nTotal of two orders: " << o1 + o2 << std::endl;
+    std::cout << "\n--- Operator + example ---\n";
+    std::cout << "Sum of prices: "
+              << laptop + apple << std::endl;
 
     std::cout << "\n--- Static example ---\n";
     std::cout << "Total products created: "
-              << Product::getProductCount() << std::endl;
+              << Product::getProductCount()
+              << std::endl;
 
     std::cout << "\n--- Stream operators ---\n";
     Product p6;

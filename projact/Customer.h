@@ -5,25 +5,26 @@
 #define CUSTOMER_H
 #include <iostream>
 #include <string>
+#include "Person.h"
 
-class Customer {
+class Customer : public Person {
 private:
-    std::string name;
     int age;
 
 public:
-
-    Customer() : Customer("No name", 0) {}
-
-    Customer(std::string n, int a)
-        : name(std::move(n)), age(a) {}
+    Customer(std::string n="No name", int a=0)
+        : Person(n), age(a) {}
 
     ~Customer() {
-        std::cout << "Customer destroyed: " << name << std::endl;
+        std::cout << "Customer destroyed: "
+                  << name << std::endl;
     }
 
-    void showInfo() const {
-        std::cout << "Customer: " << name << ", Age: " << age << std::endl;
+    void showInfo() const override {
+        std::cout << "Customer: "
+                  << name
+                  << ", Age: "
+                  << age << std::endl;
     }
 };
 
