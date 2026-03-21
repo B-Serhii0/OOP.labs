@@ -16,8 +16,8 @@ int main() {
     ElectronicProduct laptop("Laptop",25000,24);
     FoodProduct apple("Apple",30,52);
 
-    Customer c1("Ivan",19);
-    VIPCustomer vip("Oleg",25,10);
+    Customer c1("Ivan",19,1);
+    VIPCustomer vip("Oleg",25,2,10);
 
     Order o1(1,laptop,c1,2);
     Order o2(2,apple,vip,5);

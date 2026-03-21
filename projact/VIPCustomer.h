@@ -11,8 +11,8 @@ private:
     double discount;
 
 public:
-    VIPCustomer(std::string n, int a, double d)
-        : Customer(n,a), discount(d) {}
+    VIPCustomer(std::string n, int a, int id, double d)
+        : Customer(n,a,id), discount(d) {}
 
     ~VIPCustomer() {
         std::cout << "VIPCustomer destroyed\n";
