@@ -14,7 +14,7 @@ private:
 
 public:
     Customer(std::string n="No name", int a=0, int i=0)
-        : Person(n), age(a), id(i) {}
+        : Person(n), id(i), age(a) {}
 
     ~Customer() {
         std::cout << "Customer destroyed: "
@@ -28,10 +28,6 @@ public:
                   << name
                   << ", Age: "
                   << age << std::endl;
-    }
-
-    int getId() const {
-        return id;
     }
 };
 

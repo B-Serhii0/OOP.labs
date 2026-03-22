@@ -6,8 +6,9 @@
 #define LAB2_ITEM_H
 #include <iostream>
 #include <string>
+#include "Printable.h"
 
-class Item {
+class Item : public Printable {
 protected:
     std::string name;
 
@@ -22,6 +23,12 @@ public:
 
     virtual void showInfo() const {
         std::cout << "Item: " << name << std::endl;
+    }
+
+    virtual double getPrice() const = 0; // PURE VIRTUAL
+
+    void print() const override {
+        std::cout << "Printing Item: " << name << std::endl;
     }
 };
 

@@ -6,9 +6,9 @@
 #define LAB2_PERSON_H
 #include <iostream>
 #include <string>
-#
 
-class Person {
+
+class Person : public Printable {
 protected:
     std::string name;
 
@@ -24,6 +24,10 @@ public:
     virtual void showInfo() const {
         std::cout << "Person: "
                   << name << std::endl;
+    }
+
+    void print() const override {
+        std::cout << "Printing Person: " << name << std::endl;
     }
 };
 

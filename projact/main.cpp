@@ -10,6 +10,7 @@
 #include "ElectronicProduct.h"
 #include "FoodProduct.h"
 #include "Item.h"
+#include "StaticDemo.h"
 
 int main() {
 
@@ -19,34 +20,36 @@ int main() {
     Customer c1("Ivan",19,1);
     VIPCustomer vip("Oleg",25,2,10);
 
-    Order o1(1,laptop,c1,2);
-    Order o2(2,apple,vip,5);
+    Item* p1 = &laptop;
+    Item* p2 = &apple;
 
-    std::cout << "\n--- Products ---\n";
-    laptop.showInfo();
-    apple.showInfo();
+    std::cout << "\n--- Runtime polymorphism (pointer) ---\n";
+    p1->showInfo();
+    p2->showInfo();
 
-    std::cout << "\n--- Customers ---\n";
-    c1.showInfo();
-    vip.showInfo();
+    std::cout << "\n--- Runtime polymorphism (reference) ---\n";
+    Item& ref = laptop;
+    ref.showInfo();
+
+    Order o1(1, p1, c1, 2);
+    Order o2(2, p2, vip, 5);
 
     std::cout << "\n--- Orders ---\n";
     o1.showInfo();
     o2.showInfo();
 
-    std::cout << "\n--- Operator + example ---\n";
-    std::cout << "Sum of prices: "
-              << laptop + apple << std::endl;
+    std::cout << "\n--- Static binding demo ---\n";
+    StaticDemo* sd = new StaticChild();
+    sd->show();
 
-    std::cout << "\n--- Static example ---\n";
-    std::cout << "Total products created: "
-              << Product::getProductCount()
-              << std::endl;
+    std::cout << "\n--- Interface demo ---\n";
+    Printable* pr1 = &laptop;
+    Printable* pr2 = &c1;
 
-    std::cout << "\n--- Stream operators ---\n";
-    Product p6;
-    std::cin >> p6;
-    std::cout << p6 << std::endl;
+    pr1->print();
+    pr2->print();
+
+    delete sd;
 
     return 0;
 }

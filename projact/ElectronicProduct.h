@@ -6,7 +6,7 @@
 #define LAB2_ELECTRONICPRODUCT_H
 
 
-class ElectronicProduct : public Product {
+class ElectronicProduct final : public Product { // FINAL
 private:
     int warrantyMonths;
 
