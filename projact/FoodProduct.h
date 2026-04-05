@@ -9,20 +9,14 @@
 class FoodProduct : public Product {
 private:
     int calories;
-
 public:
-    FoodProduct(std::string n, double p, int c)
-        : Product(n, p), calories(c) {}
-
-    ~FoodProduct() {
-        std::cout << "FoodProduct destroyed\n";
-    }
-
+    FoodProduct(string n, double p, int c) : Product(n,p), calories(c) {}
     void showInfo() const override {
-        Product::showInfo();
-        std::cout << "Calories: "
-                  << calories << std::endl;
+        cout << "[Food] " << name
+             << " Price: " << price
+             << " Calories: " << calories << endl;
     }
+    int getCalories() const { return calories; }
 };
 
 

@@ -6,24 +6,17 @@
 #define LAB2_ELECTRONICPRODUCT_H
 
 
-class ElectronicProduct final : public Product { // FINAL
+class ElectronicProduct : public Product {
 private:
     int warrantyMonths;
-
 public:
-    ElectronicProduct(std::string n, double p, int w)
-        : Product(n, p), warrantyMonths(w) {}
-
-    ~ElectronicProduct() {
-        std::cout << "ElectronicProduct destroyed\n";
-    }
-
+    ElectronicProduct(string n, double p, int w) : Product(n,p), warrantyMonths(w) {}
     void showInfo() const override {
-        Product::showInfo();
-        std::cout << "Warranty: "
-                  << warrantyMonths << " months\n";
+        cout << "[Electronic] " << name
+             << " Price: " << price
+             << " Warranty: " << warrantyMonths << " months" << endl;
     }
+    int getWarranty() const { return warrantyMonths; }
 };
-
 
 #endif //LAB2_ELECTRONICPRODUCT_H

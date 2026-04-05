@@ -10,25 +10,12 @@
 
 class Person : public Printable {
 protected:
-    std::string name;
-
+    string name;
 public:
-    Person(std::string n="NoName")
-        : name(n) {}
-
-    virtual ~Person() {
-        std::cout << "Person destroyed: "
-                  << name << std::endl;
-    }
-
-    virtual void showInfo() const {
-        std::cout << "Person: "
-                  << name << std::endl;
-    }
-
-    void print() const override {
-        std::cout << "Printing Person: " << name << std::endl;
-    }
+    Person(string n="NoName") : name(n) {}
+    virtual ~Person() {}
+    virtual void showInfo() const { cout << "Person: " << name << endl; }
+    void print() const override { cout << "Printing Person: " << name << endl; }
 };
 
 

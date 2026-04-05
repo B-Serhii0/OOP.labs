@@ -4,33 +4,26 @@
 
 #ifndef LAB2_ITEM_H
 #define LAB2_ITEM_H
+using namespace std;
+#include "Printable.h"
 #include <iostream>
 #include <string>
-#include "Printable.h"
+
 
 class Item : public Printable {
 protected:
-    std::string name;
-
+    string name;
 public:
-    Item(std::string n = "Unknown") : name(n) {
-        std::cout << "Item constructor\n";
-    }
-
-    virtual ~Item() {
-        std::cout << "Item destroyed: " << name << std::endl;
-    }
-
+    Item(string n = "Unknown") : name(n) {}
+    virtual ~Item() {}
     virtual void showInfo() const {
-        std::cout << "Item: " << name << std::endl;
+        cout << "Item: " << name << endl;
     }
-
-    virtual double getPrice() const = 0; // PURE VIRTUAL
-
+    virtual double getPrice() const = 0;
     void print() const override {
-        std::cout << "Printing Item: " << name << std::endl;
+        cout << "Printing Item: " << name << endl;
     }
+    string getName() const { return name; }
 };
-
 
 #endif //LAB2_ITEM_H

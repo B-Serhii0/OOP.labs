@@ -11,24 +11,12 @@ class Customer : public Person {
 private:
     int id;
     int age;
-
 public:
-    Customer(std::string n="No name", int a=0, int i=0)
-        : Person(n), id(i), age(a) {}
-
-    ~Customer() {
-        std::cout << "Customer destroyed: "
-                  << name << std::endl;
-    }
-
+    Customer(string n="NoName", int a=0, int i=0) : Person(n), id(i), age(a) {}
     void showInfo() const override {
-        std::cout << "Customer ID: "
-                  << id
-                  << ", Name: "
-                  << name
-                  << ", Age: "
-                  << age << std::endl;
+        cout << "Customer ID: " << id << ", Name: " << name << ", Age: " << age << endl;
     }
+    string getName() const { return name; }
 };
 
 
